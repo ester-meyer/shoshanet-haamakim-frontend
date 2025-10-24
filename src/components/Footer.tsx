@@ -1,0 +1,96 @@
+import { Link } from "react-router-dom";
+import carIcon from "../assets/icons/lucide_car.svg";
+import clockIcon from "../assets/icons/lucide_clock.svg";
+import "../style/Footer.css";
+import { useEffect, useState } from "react";
+import { get } from "../service/apiService";
+
+const Footer = () => {
+  const [categories, setCategories] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response: any = await get("/categories/");
+        if (response.data) {
+            setCategories(response.data);
+          }
+        } catch (error) {
+          setCategories([{ name: "שגיאה בטעינת קטגוריות" }]);
+        }
+      };
+  
+      fetchCategories();
+    }, []);
+  
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-section">
+          <h3>האתר שלנו</h3>
+          <ul>
+            <li>
+              <Link to="/" state={{ scrollTo: "home" }}>דף הבית</Link>
+            </li>
+            <li>
+              <Link to="/" state={{ scrollTo: "about" }}>אודות</Link>
+            </li>
+            <li>
+              <Link to="/" state={{ scrollTo: "contact" }}>צור קשר</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h3>צור קשר</h3>
+          <ul>
+            <li>רשב”י 15 מודיעין עילית</li>
+            <li>08 - 9744553</li>
+            <li>053-319-1206</li>
+            <li>9744553@gmail.com</li>
+          </ul>
+        </div>
+
+        <div className="footer-section">
+          <h3>קטגוריות</h3>
+          <ul>
+            {categories.map((category: any) => (
+              !category.parent && (
+              <li key={category._id}>
+                <Link to={`/products/${category.name}`}>{category.name}</Link>
+              </li>)
+            ))}
+          </ul>
+        </div>
+
+        <div className="footer-section footer-availability">
+          <h3>
+            זמינים אליכם בכל עת{" "}
+            <img src={clockIcon} alt="Clock" className="footer-icon" />
+          </h3>
+          <ul>
+            <li>בוקר - 10:00-13:30</li>
+            <li>ערב - 19:00-22:00</li>
+            <li>יום שישי - 10:00-13:00</li>
+          </ul>
+          <h4>
+            שירות משלוחים לכל רחבי הארץ{" "}
+            <img src={carIcon} alt="Car" className="footer-icon-large" />
+          </h4>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <a
+          href="https://tamar-portfolio-umber.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >© 2025 | Designed By: Tamar</a> <a
+          href="https://resonant-tapioca-77d510.netlify.app/" target="_blank"
+          rel="noopener noreferrer"
+        > & Mindy | All rights reserved</a>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -1,0 +1,255 @@
+.subcategory-page {
+  position: relative;
+  padding: 20px;
+  max-width: 90%;
+  margin: 60px auto 0 auto;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.breadcrumb span {
+  color: #999;
+  margin: 0 6px;
+}
+
+.subcategory-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b35b52;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 2px rgba(136, 136, 136, 0.25);
+}
+
+.title-underline {
+  border-bottom: 1px solid #ddd;
+  width: 80vw;
+  margin: 0 auto 60px auto;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bouquet-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.admin-actions {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.delete-btn {
+  border: 1px solid #999;
+  background: #f1f1f1;
+  padding: 6px 10px;
+  font-family: "Heebo", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.delete-btn:hover {
+  background: #b35b52;
+  color: white;
+}
+
+.add-product-btn {
+  position: absolute;
+  top: 40px;
+  left: 6%;
+  background: #ffffff;
+  color: #b66a60;
+  border: 1px solid #b66a60;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.add-product-btn:hover {
+  background: #b66a60;
+  transform: translateY(-2px);
+  color: white;
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(239, 239, 239, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.4s ease;
+}
+
+.popup-content {
+  position: relative;
+  background: #fff;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  animation: popUp 0.35s ease forwards;
+}
+
+.popup-content img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.popup-content h2 {
+  font-size: 1.4rem;
+  font-family: "Assistant", sans-serif;
+  font-weight: 500;
+  color: #161616;
+  margin-bottom: 16px;
+}
+
+.popup-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.delete-btn-popup {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b35b52;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.delete-btn-popup:hover {
+  transform: scale(1.2);
+  color: #ff4d4f;
+}
+
+.popup-content {
+  position: relative;
+  background: #fff;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  animation: popUp 0.35s ease forwards;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #dedede;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.popup-close:hover {
+  color: #b35b52;
+}
+
+.popup-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.delete-btn-popup-footer {
+  position: absolute;
+  left: 3%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b35b52;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn-popup-footer:hover {
+  transform: scale(1.2);
+}
+
+.trash-icon {
+  width: 25px;
+  height: 25px;
+  pointer-events: none;
+  margin-bottom: 12px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  color: #b35b52;
+}
+
+.breadcrumb span {
+  margin: 0 6px;
+}
+
