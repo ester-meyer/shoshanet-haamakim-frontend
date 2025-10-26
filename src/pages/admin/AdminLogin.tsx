@@ -32,10 +32,10 @@
 //   );
 // };
 // export default AdminLogin;
-import { useNavigate } from "react-router-dom";
-import { post } from "../../service/apiService";
-import { useState } from "react";
-import "../../style/AdminLogin.css";
+import { useNavigate } from 'react-router-dom';
+import { post } from '../../service/apiService';
+import { useState } from 'react';
+import '../../style/AdminLogin.css';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -43,13 +43,13 @@ const AdminLogin = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    post("/admin/login", {
+    post('/admin/login', {
       username: e.target[0].value,
       password: e.target[1].value,
     })
       .then(() => {
-        localStorage.setItem("isadminloggedin", "true");
-        navigate("/admin/products");
+        localStorage.setItem('isadminloggedin', 'true');
+        navigate('/admin/products');
       })
       .catch((error: any) => {
         setMessage(error.message);

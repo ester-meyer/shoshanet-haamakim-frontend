@@ -8,7 +8,7 @@
   font-weight: normal;
   margin-bottom: 4vh;
   text-align: right;
-  margin-right:-2vw;
+  margin-right: -2vw;
 }
 
 .bouquet-grid {
@@ -28,11 +28,13 @@
   padding: 8px 16px;
   font-size: 14px;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .bouquet-button:hover {
-  background: #BC6C62;
+  background: #bc6c62;
   color: white;
 }
 /* .bouquet-section {

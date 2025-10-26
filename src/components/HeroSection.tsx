@@ -1,6 +1,6 @@
-import React from "react";
-import videoHomePage from "../assets/video-homePage.mp4";
-import "../style/HeroSection.css";
+import React from 'react';
+import videoHomePage from '../assets/video-homePage.mp4';
+import '../style/HeroSection.css';
 
 const HeroSection: React.FC = () => {
   return (

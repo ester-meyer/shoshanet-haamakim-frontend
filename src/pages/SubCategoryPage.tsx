@@ -1,9 +1,9 @@
-import { Link, Outlet, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { get, remove } from "../service/apiService";
-import BouquetCard from "../components/BouquetCard";
-import ProductForm from "./admin/ProductForm";
-import "../style/SubCategoryPage.css";
+import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { get, remove } from '../service/apiService';
+import BouquetCard from '../components/BouquetCard';
+import ProductForm from './admin/ProductForm';
+import '../style/SubCategoryPage.css';
 
 const SubCategoryPage = () => {
   const { subCategory } = useParams<{ subCategory: string }>();
@@ -13,22 +13,26 @@ const SubCategoryPage = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
-  const isAdmin = localStorage.getItem("isadminloggedin") === "true" || false;
+  const isAdmin = localStorage.getItem('isadminloggedin') === 'true' || false;
 
-  const isHebrew = (str = "") => /^[\u0590-\u05FF\s"'\-]+$/.test(str);
+  const isHebrew = (str = '') => /^[\u0590-\u05FF\s"'\-]+$/.test(str);
 
   const getProducts = async () => {
-    setMessage("");
+    setMessage('');
     const response = await get(
-      subCategory ? `/product/getByCategory/${subCategory}` : category ? `/product/getByCategory/${category}` : `/product/`
+      subCategory
+        ? `/product/getByCategory/${subCategory}`
+        : category
+          ? `/product/getByCategory/${category}`
+          : `/product/`
     );
     if (response.error) {
-      setMessage(response.message || "שגיאה לא צפויה");
+      setMessage(response.message || 'שגיאה לא צפויה');
       setProducts([]);
     } else if (response.data?.length > 0) {
       setProducts(response.data);
     } else {
-      setMessage("לא נמצאו מוצרים");
+      setMessage('לא נמצאו מוצרים');
       setProducts([]);
     }
   };
@@ -41,7 +45,7 @@ const SubCategoryPage = () => {
       setSelectedProduct(null);
       setReload(reload + 1);
     } catch {
-      setMessage("שגיאה במחיקה");
+      setMessage('שגיאה במחיקה');
     }
   };
 
@@ -64,7 +68,9 @@ const SubCategoryPage = () => {
         {isHebrew(subCategory) && subCategory && (
           <>
             <span>›</span>
-            <Link to={`/products/${category}/${subCategory}`}>{subCategory}</Link>
+            <Link to={`/products/${category}/${subCategory}`}>
+              {subCategory}
+            </Link>
           </>
         )}
       </div>
