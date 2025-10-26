@@ -5,7 +5,8 @@ import ImageUploader from '../../components/ImageUploader';
 
 export default function ProductForm({ setIsModalOpen }: any) {
   const [message, setMessage] = useState<string | null>(null);
-  const [categories, setCategories] = useState<any[]>();
+  const [categories, setCategories] = useState<any[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<any>({
     category: '',
     name: '',
@@ -13,6 +14,7 @@ export default function ProductForm({ setIsModalOpen }: any) {
     image: null,
   });
   const uploaderRef = useRef<any>(null);
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -45,6 +47,10 @@ export default function ProductForm({ setIsModalOpen }: any) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setMessage(null);
+
     const croppedFile = await uploaderRef.current.getCroppedImage();
 
     const data = new FormData();
@@ -58,6 +64,8 @@ export default function ProductForm({ setIsModalOpen }: any) {
       setIsModalOpen(false);
     } catch (error: any) {
       setMessage(error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -110,7 +118,10 @@ export default function ProductForm({ setIsModalOpen }: any) {
       <label>תמונה</label>
       <ImageUploader name="image" onChange={handleChange} ref={uploaderRef} />
       {message && <p className="error-message">{message}</p>}
-      <button type="submit">שמירה</button>
+
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'שומר...' : 'שמירה'}
+      </button>
     </form>
   );
 }
