@@ -7,8 +7,8 @@
   padding: 3rem 2rem;
   background-color: #fff;
   border: 1px solid #ddd;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  font-family: "Heebo", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Heebo', sans-serif;
   direction: rtl;
   overflow-y: auto;
   max-height: 90vh;
@@ -59,10 +59,10 @@
 .product-form select:focus {
   border-color: #b35b52;
   outline: none;
-  box-shadow: 0 0 4px rgba(179,91,82,0.4);
+  box-shadow: 0 0 4px rgba(179, 91, 82, 0.4);
 }
 
-.product-form button[type="submit"] {
+.product-form button[type='submit'] {
   background-color: #b35b52;
   color: #fff;
   font-weight: 600;
@@ -72,10 +72,10 @@
   cursor: pointer;
   transition: 0.2s;
   position: sticky;
-  bottom: 0; 
+  bottom: 0;
 }
 
-.product-form button[type="submit"]:hover {
+.product-form button[type='submit']:hover {
   background-color: #963f38;
 }
 
@@ -85,7 +85,7 @@
   font-size: 0.9rem;
 }
 
-.product-form input[type="file"] {
+.product-form input[type='file'] {
   border: 1px solid #aaa;
   border-radius: 4px;
   padding: 10px;
@@ -96,7 +96,7 @@
   width: 100%;
 }
 
-.product-form input[type="file"]:hover {
+.product-form input[type='file']:hover {
   background-color: #f2f2f2;
 }
 

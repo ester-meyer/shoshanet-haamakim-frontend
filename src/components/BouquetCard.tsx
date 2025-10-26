@@ -58,8 +58,8 @@
 // };
 
 // export default BouquetCard;
-import React from "react";
-import "../style/BouquetCard.css";
+import React from 'react';
+import '../style/BouquetCard.css';
 
 type BouquetProps = {
   id: string;

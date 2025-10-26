@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import "../style/NavBar.css";
-import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
-import { post } from "../service/apiService";
-import { get } from "../service/apiService";
+import { useState, useEffect } from 'react';
+import '../style/NavBar.css';
+import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
+import { post } from '../service/apiService';
+import { get } from '../service/apiService';
 
 const NavBar = () => {
-  const isAdmin = localStorage.getItem("isadminloggedin") === "true" || false;
+  const isAdmin = localStorage.getItem('isadminloggedin') === 'true' || false;
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -16,12 +16,12 @@ const NavBar = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response: any = await get("/categories/");
+        const response: any = await get('/categories/');
         if (response.data) {
           setCategories(response.data);
         }
-      } catch (error) {
-        setCategories([{ name: "שגיאה בטעינת קטגוריות" }]);
+      } catch {
+        setCategories([{ name: 'שגיאה בטעינת קטגוריות' }]);
       }
     };
 
@@ -36,7 +36,7 @@ const NavBar = () => {
     };
 
     handleScroll();
-  }, []);
+  }, [lastScrollY]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,8 +44,8 @@ const NavBar = () => {
       else setIsVisible(true);
       setLastScrollY(window.scrollY);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
   useEffect(() => {
@@ -55,14 +55,14 @@ const NavBar = () => {
         setActiveDropdown(null);
       }
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen]);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]);
 
@@ -84,11 +84,11 @@ const NavBar = () => {
   };
 
   return (
-    <nav className={`navbar ${isVisible ? "show" : "hide"}`} dir="rtl">
+    <nav className={`navbar ${isVisible ? 'show' : 'hide'}`} dir="rtl">
       <div className="navbar-container">
         <div className="logo-container">
           <Link
-            to={isAdmin ? "/admin" : "/"}
+            to={isAdmin ? '/admin' : '/'}
             className="navbar-link"
             onClick={closeMenu}
           >
@@ -97,7 +97,7 @@ const NavBar = () => {
         </div>
 
         <button
-          className={`hamburger ${isMenuOpen ? "active" : ""}`}
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="תפריט"
           aria-expanded={isMenuOpen}
@@ -107,73 +107,82 @@ const NavBar = () => {
           <span></span>
         </button>
 
-        <div className={`navbar-menu-container ${isMenuOpen ? "open" : ""}`}>
+        <div className={`navbar-menu-container ${isMenuOpen ? 'open' : ''}`}>
           <ul className="navbar-menu">
-            {categories.map((category: any) => (
-              category.parent === null && (
-              <li
-                className={`navbar-item dropdown ${activeDropdown === category.name ? "active" : ""
-                  }`}
-                onMouseEnter={() => handleMouseEnter(category.name)}
-                onMouseLeave={handleMouseLeave}
-                key={category.name}
-              >
-                <div className="category-header">
-                  <Link
-                    to={isAdmin ? `/admin/products/${category.name}` : `/products/${category.name}`}
-                    className="navbar-link"
-                    onClick={closeMenu}
+            {categories.map(
+              (category: any) =>
+                category.parent === null && (
+                  <li
+                    className={`navbar-item dropdown ${
+                      activeDropdown === category.name ? 'active' : ''
+                    }`}
+                    onMouseEnter={() => handleMouseEnter(category.name)}
+                    onMouseLeave={handleMouseLeave}
+                    key={category.name}
                   >
-                    {category.name}
-                  </Link>
+                    <div className="category-header">
+                      <Link
+                        to={
+                          isAdmin
+                            ? `/admin/products/${category.name}`
+                            : `/products/${category.name}`
+                        }
+                        className="navbar-link"
+                        onClick={closeMenu}
+                      >
+                        {category.name}
+                      </Link>
 
-                  <button
-                    className="dropdown-toggle"
-                    onClick={() => toggleDropdown(category.name)}
-                    aria-label={`הצג תת-קטגוריות של ${category.name}`}
-                  >
-                    <svg
-                      width="12"
-                      height="8"
-                      viewBox="0 0 12 8"
-                      fill="currentColor"
-                      className={
-                        activeDropdown === category.name ? "rotated" : ""
-                      }
-                    >
-                      <path
-                        d="M1 1L6 6L11 1"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        fill="none"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                      <button
+                        className="dropdown-toggle"
+                        onClick={() => toggleDropdown(category.name)}
+                        aria-label={`הצג תת-קטגוריות של ${category.name}`}
+                      >
+                        <svg
+                          width="12"
+                          height="8"
+                          viewBox="0 0 12 8"
+                          fill="currentColor"
+                          className={
+                            activeDropdown === category.name ? 'rotated' : ''
+                          }
+                        >
+                          <path
+                            d="M1 1L6 6L11 1"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            fill="none"
+                          />
+                        </svg>
+                      </button>
+                    </div>
 
-                {activeDropdown === category.name && (
-                  <ul className="dropdown-menu">
-                    {categories.filter((cat: any) => cat.parent?._id === category._id).map(
-                      (subCategory: any) => (
-                        <li key={subCategory._id}>
-                          <Link
-                            to={
-                              isAdmin
-                                ? `/admin/products/${category.name}/${subCategory.name}`
-                                : `/products/${category.name}/${subCategory.name}`
-                            }
-                            className="dropdown-link"
-                            onClick={closeMenu}
-                          >
-                            {subCategory.name}
-                          </Link>
-                        </li>
-                      )
+                    {activeDropdown === category.name && (
+                      <ul className="dropdown-menu">
+                        {categories
+                          .filter(
+                            (cat: any) => cat.parent?._id === category._id
+                          )
+                          .map((subCategory: any) => (
+                            <li key={subCategory._id}>
+                              <Link
+                                to={
+                                  isAdmin
+                                    ? `/admin/products/${category.name}/${subCategory.name}`
+                                    : `/products/${category.name}/${subCategory.name}`
+                                }
+                                className="dropdown-link"
+                                onClick={closeMenu}
+                              >
+                                {subCategory.name}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
                     )}
-                  </ul>
-                )}
-              </li>)
-            ))}
+                  </li>
+                )
+            )}
 
             <div className="navbar-about-contact-container">
               {!isAdmin ? (
@@ -181,7 +190,7 @@ const NavBar = () => {
                   <li className="navbar-item">
                     <Link
                       to="/"
-                      state={{ scrollTo: "about" }}
+                      state={{ scrollTo: 'about' }}
                       className="navbar-link"
                       onClick={closeMenu}
                     >
@@ -191,7 +200,7 @@ const NavBar = () => {
                   <li className="navbar-item">
                     <Link
                       to="/"
-                      state={{ scrollTo: "contact" }}
+                      state={{ scrollTo: 'contact' }}
                       className="navbar-link"
                       onClick={closeMenu}
                     >
@@ -205,8 +214,8 @@ const NavBar = () => {
                     to="/"
                     className="navbar-link"
                     onClick={() => {
-                      localStorage.removeItem("isadminloggedin");
-                      post("/admin/logout");
+                      localStorage.removeItem('isadminloggedin');
+                      post('/admin/logout');
                       closeMenu();
                     }}
                   >
@@ -218,7 +227,9 @@ const NavBar = () => {
           </ul>
         </div>
 
-        {isMenuOpen && <div className="navbar-overlay" onClick={closeMenu}></div>}
+        {isMenuOpen && (
+          <div className="navbar-overlay" onClick={closeMenu}></div>
+        )}
       </div>
     </nav>
   );

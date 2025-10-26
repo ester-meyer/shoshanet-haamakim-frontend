@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+import { Outlet } from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 const AppLayout = () => {
   return (
@@ -13,7 +13,7 @@ const AppLayout = () => {
         <Outlet />
       </main>
 
-      <footer style={{ textAlign: "center" }}>
+      <footer style={{ textAlign: 'center' }}>
         <Footer />
       </footer>
     </div>

@@ -42,7 +42,7 @@ video {
 .overlay-title {
   font-size: clamp(32px, 6vw, 80px);
   font-weight: bold;
-  color: #BC6C62;
+  color: #bc6c62;
   margin: 0 0 20px 0;
   word-wrap: break-word;
 }
@@ -57,7 +57,7 @@ video {
 
 .cta-button {
   display: inline-block;
-  background-color: #BC6C62;
+  background-color: #bc6c62;
   color: black;
   padding: clamp(12px, 2vh, 16px) clamp(20px, 3vw, 28px);
   font-size: clamp(16px, 1.7vw, 24px);

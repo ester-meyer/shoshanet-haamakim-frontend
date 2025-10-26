@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const post = async (path = "/api", data: any = {}) => {
+export const post = async (path = '/api', data: any = {}) => {
   try {
     const response = await axios.post(`${API_URL}${path}`, data, {
       withCredentials: true,
@@ -12,13 +12,12 @@ export const post = async (path = "/api", data: any = {}) => {
     if (error.response && error.response.data) {
       throw error.response.data;
     } else {
-      throw { message: "שגיאה לא צפויה" };
+      throw { message: 'שגיאה לא צפויה' };
     }
   }
-
 };
 
-export const get = async (path = "/api") => {
+export const get = async (path = '/api') => {
   try {
     const response = await axios.get(`${API_URL}${path}`, {
       withCredentials: true,
@@ -29,7 +28,7 @@ export const get = async (path = "/api") => {
   }
 };
 
-export const remove = async (path = "/api", data: any = {}) => {
+export const remove = async (path = '/api', data: any = {}) => {
   try {
     const response = await axios.delete(`${API_URL}${path}`, {
       data,
@@ -42,11 +41,11 @@ export const remove = async (path = "/api", data: any = {}) => {
 };
 
 const handleError = (error: any) => {
-  console.error("API Error:", error);
+  console.error('API Error:', error);
   // אם יש תגובת שרת
   if (error.response && error.response.data) {
     return error.response.data;
   } else {
-    return { message: "שגיאה לא צפויה" };
+    return { message: 'שגיאה לא צפויה' };
   }
 };

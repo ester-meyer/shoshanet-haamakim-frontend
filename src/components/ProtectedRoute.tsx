@@ -1,12 +1,13 @@
-import { Navigate } from "react-router-dom";
-import type { JSX } from "react/jsx-dev-runtime";
+import { Navigate } from 'react-router-dom';
+import type { JSX } from 'react/jsx-dev-runtime';
 
 type Props = {
   children: JSX.Element;
 };
 
 const ProtectedRoute = ({ children }: Props) => {
-  const isLoggedIn = localStorage.getItem("isadminloggedin")==="true" || false;
+  const isLoggedIn =
+    localStorage.getItem('isadminloggedin') === 'true' || false;
   if (!isLoggedIn) {
     return <Navigate to="/admin/login" replace />;
   }

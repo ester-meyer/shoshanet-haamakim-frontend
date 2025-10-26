@@ -1,7 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import BouquetCard from "./BouquetCard";
-import "../style/BouquetSection.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import BouquetCard from './BouquetCard';
+import '../style/BouquetSection.css';
 
 type Bouquet = {
   _id: string;
@@ -15,7 +15,11 @@ type BouquetSectionProps = {
   route: string;
 };
 
-const BouquetSection: React.FC<BouquetSectionProps> = ({ title, bouquets = [], route }) => {
+const BouquetSection: React.FC<BouquetSectionProps> = ({
+  title,
+  bouquets = [],
+  route,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -23,7 +27,12 @@ const BouquetSection: React.FC<BouquetSectionProps> = ({ title, bouquets = [], r
       <h2 className="bouquet-section-title">{title}</h2>
       <div className="bouquet-grid">
         {bouquets.slice(0, 4).map((b) => (
-          <BouquetCard key={b._id} id={b._id} name={b.name} image={b.imageURL} />
+          <BouquetCard
+            key={b._id}
+            id={b._id}
+            name={b.name}
+            image={b.imageURL}
+          />
         ))}
       </div>
       <div className="bouquet-button-wrapper">

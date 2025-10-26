@@ -57,7 +57,7 @@
   border: 1px solid #999;
   background: #f1f1f1;
   padding: 6px 10px;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -118,7 +118,7 @@
 
 .popup-content h2 {
   font-size: 1.4rem;
-  font-family: "Assistant", sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-weight: 500;
   color: #161616;
   margin-bottom: 16px;
@@ -139,7 +139,9 @@
   border: none;
   cursor: pointer;
   color: #b35b52;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
   padding: 0;
   display: flex;
   align-items: center;
@@ -192,7 +194,9 @@
   border: none;
   cursor: pointer;
   color: #b35b52;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
   padding: 0;
   display: flex;
   align-items: center;
@@ -252,4 +256,3 @@
 .breadcrumb span {
   margin: 0 6px;
 }
-

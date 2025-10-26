@@ -1,5 +1,5 @@
 .bouquet-grid-container {
-  display:flex ;
+  display: flex;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   justify-items: stretch;
@@ -15,15 +15,17 @@
   border: 1px solid #eee;
   background: #fff;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
 }
 
 .bouquet-card:hover {
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 .bouquet-image {
@@ -68,7 +70,9 @@
   border: none;
   cursor: pointer;
   color: #b35b52;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
   padding: 0;
   display: flex;
   align-items: center;
